@@ -1,0 +1,40 @@
+server:
+  port: 8010
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/product?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      max-active: 20
+      min-idle: 10
+      initial-size: 5
+  servlet:
+    multipart:
+      location: e:/upload
+      max-file-size: 5242880
+      max-request-size: 20MB
+
+  mvc:
+    static-path-pattern: /**
+  thymeleaf:
+    prefix: classpath:/templates/
+  redis:
+    jedis:
+      pool:
+        max-idle: 10
+        max-active: 10
+        min-idle: 5
+        max-wait: 2000
+    host: 114.115.217.85
+    port: 6379
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+ # configuration:
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+logging:
+  level:
+    root: info
